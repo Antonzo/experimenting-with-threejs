@@ -1,5 +1,11 @@
 precision mediump float;
 
+uniform vec3 u_color_1;
+uniform vec3 u_color_2;
+
+varying vec3 v_position;
+
 void main() {
-    gl_FragColor = vec4(1.0,1.0,1.0,1.0);
+    vec3 mix_colors = mix(u_color_1, u_color_2, v_position.y);
+    gl_FragColor = vec4(mix_colors, 1.0);
 }
