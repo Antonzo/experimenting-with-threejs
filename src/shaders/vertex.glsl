@@ -9,6 +9,10 @@ varying vec3 v_position;
 
 void main() {
    vec3 copy_position = position;
+   copy_position.y *= u_scale + sin(copy_position.z * 10.0) * (1.0 - u_scale);
+   copy_position.x *= u_scale + sin(copy_position.y * 10.0) * (1.0 - u_scale);
+   copy_position.z *= u_scale + sin(copy_position.x * 10.0) * (1.0 - u_scale);
+
    copy_position *= u_scale;
 
    vec4 modelPosition = modelMatrix * vec4(copy_position, 1.0);
